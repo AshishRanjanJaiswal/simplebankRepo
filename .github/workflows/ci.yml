@@ -42,12 +42,10 @@ jobs:
     services:
       postgres:
         image: postgres:15
-        # Provide the password for postgres
         env:
         POSTGRES_USER: root
           POSTGRES_PASSWORD: secret
           POSTGRES_DB: simple_bank
-        # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -62,5 +60,8 @@ jobs:
       with:
         go-version: 1.19
    
+   - name: Run migrations
+      run: make migrate
+      
     - name: Test
       run: make test
