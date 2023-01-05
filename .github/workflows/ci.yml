@@ -44,7 +44,6 @@ jobs:
         image: postgres:15-alpine
         env:
         POSTGRES_USER: root
-          POSTGRES_PASSWORD: secret
           POSTGRES_DB: simple_bank
         options: >-
           --health-cmd pg_isready
